@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f4">
+  <meta name="description" content="Discover everyday essentials, handpicked deals and helpful shopping support at Bazaar.">
+  <title>Bazaar – Online shopping for everyday needs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement">A little something for your everyday <span>Free delivery on orders over ₹499</span></div>
+  <header class="top">
+    <a class="brand" href="/" aria-label="Bazaar home"><span class="brand-mark">b.</span>Bazaar</a>
+    <form class="search" id="searchForm" role="search">
+      <label class="sr" for="search">Search products</label>
+      <input id="search" type="search" placeholder="Search for phones, shoes, books and more">
+      <button type="submit">Search</button>
+    </form>
+    <div class="top-actions">
+      <button id="accountBtn" class="account-btn" type="button">Sign in</button>
+      <button id="cartBtn" class="cart-btn" type="button"><span aria-hidden="true">🛍</span> Cart <span id="cartCount" class="count">0</span></button>
+    </div>
+  </header>
+  <nav id="cats" class="cats" aria-label="Categories"></nav>
+
+  <section class="banner" aria-roledescription="carousel" aria-label="Offers">
+    <button id="prev" class="nav l" type="button" aria-label="Previous offer">&#8249;</button>
+    <div id="slide" class="slide"></div>
+    <button id="next" class="nav r" type="button" aria-label="Next offer">&#8250;</button>
+  </section>
+
+  <section class="perks">
+    <div>🚚 Free delivery over ₹499</div>
+    <div>↩️ 7-day easy returns</div>
+    <div>🔒 Secure payments</div>
+    <div>⭐ 4.3 average customer rating</div>
+  </section>
+
+  <main>
+    <div class="bar">
+      <h2 id="title">Top deals today</h2>
+      <label>Sort
+        <select id="sort">
+          <option value="rel">Relevance</option>
+          <option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option>
+          <option value="rate">Customer rating</option>
+        </select>
+      </label>
+    </div>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="muted" hidden>No products match your search. Try a different word or category.</p>
+  </main>
+
+  <footer class="foot">
+    <div><strong>Bazaar</strong><p class="muted">Demo store built for learning. No real orders are taken.</p></div>
+    <div><strong>Help</strong><p class="muted">Shipping &middot; Returns &middot; Payments &middot; Contact</p></div>
+  </footer>
+
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="drawer" class="drawer" aria-label="Shopping cart" hidden>
+    <div class="dhead"><h2>Your cart</h2><button id="closeCart" type="button">Close</button></div>
+    <ul id="cartItems" class="items"></ul>
+    <p id="cartEmpty" class="muted">Your cart is empty. Add something from the store.</p>
+    <div class="dfoot">
+      <div class="row"><span>Subtotal</span><strong id="cartTotal">₹0</strong></div>
+      <button id="checkout" class="buy" type="button">Place order</button>
+    </div>
+  </aside>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Product details" hidden>
+    <div class="mbox" id="mbox"></div>
+  </div>
+
+  <dialog id="authDialog" class="auth-dialog" aria-labelledby="authTitle">
+    <div class="auth-head">
+      <h2 id="authTitle">Sign in</h2>
+      <button id="authClose" class="auth-close" type="button" aria-label="Close sign-in dialog">×</button>
+    </div>
+    <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
+    <form id="authForm">
+      <label id="authNameField" hidden>
+        Name
+        <input id="authName" name="name" type="text" autocomplete="name" maxlength="100">
+      </label>
+      <label>
+        Email
+        <input id="authEmailInput" name="email" type="email" autocomplete="email" required>
+      </label>
+      <label>
+        Password
+        <input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="8" required>
+      </label>
+      <button id="authSubmit" class="auth-submit" type="submit">Sign in</button>
+    </form>
+    <p class="auth-switch"><span id="authSwitchPrompt">New to Bazaar?</span> <button id="authSwitch" type="button">Create an account</button></p>
+    <section id="authAccount" class="auth-account" hidden>
+      <p>You are signed in as</p>
+      <strong id="authAccountEmail"></strong>
+      <button id="authSignOut" class="auth-submit" type="button">Sign out</button>
+    </section>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="app.js"></script>
+  <script src="auth.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
